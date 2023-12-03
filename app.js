@@ -34,6 +34,8 @@ app.use("/", readRouter);
 app.use("/", updateRouter);
 app.use("/", deleteRouter);
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   "app listening on port 3000";
 });
