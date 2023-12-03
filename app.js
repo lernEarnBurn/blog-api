@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const cors = require("cors");
-const httpProxy = require("http-proxy-middleware");
 
 const createRouter = require("./routers/create");
 const readRouter = require("./routers/read");
@@ -28,12 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(logger("dev"));
 
-const apiProxy = httpProxy.createProxyMiddleware({
-  target: "http://13.58.53.141:3000", 
-  changeOrigin: true,
-});
-
-app.use('/api', apiProxy)
 
 app.use("/", authRouter);
 app.use("/", createRouter);
